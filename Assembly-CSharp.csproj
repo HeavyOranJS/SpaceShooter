@@ -63,6 +63,7 @@
      <Compile Include="Assets\_Complete-Game\Scripts\Done_WeaponController.cs" />
      <Compile Include="Assets\Scripts\destroyByBoundry.cs" />
      <Compile Include="Assets\Scripts\destroyByContact.cs" />
+     <Compile Include="Assets\Scripts\destroyByTime.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\Mover.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
