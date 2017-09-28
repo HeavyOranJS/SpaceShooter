@@ -17,12 +17,20 @@ public class PlayerController : MonoBehaviour {
 	public Transform shotSwapn;
 	public float fireRate;
 	private float nextFire;
+
+	AudioSource audio = new AudioSource();
+
+	void Start(){
+		audio = GetComponent<AudioSource>();
+	}
+
 	void Update(){
 		if (Time.time > nextFire) 
 		// if (Input.GetButton("Fire1") && Time.time > nextFire) 
         {
             nextFire = Time.time + fireRate;
 			Instantiate(shot, shotSwapn.position, shotSwapn.rotation);
+			audio.Play ();
         }
 		//Instantiate(shot, shotSwapn.position, shotSwapn.rotation);
 	}
