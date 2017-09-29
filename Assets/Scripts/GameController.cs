@@ -14,10 +14,25 @@ public class GameController : MonoBehaviour {
 
 	public Wait wait;
 
+	public UnityEngine.UI.Text scoreText;	
+	private int score; 
+
 	void Start () {
+		//scoreText = GetComponent<UnityEngine.UI.Text>();
+		score = 0;
+		UpdateScore();
 		StartCoroutine (spawnWaves());	
 	}
 	
+	void UpdateScore(){
+		scoreText.text = "Score: " + score;
+	}
+
+	public void addScore(int newScoreValue){
+		score += newScoreValue;
+		UpdateScore();
+	}
+
 	IEnumerator spawnWaves() {
 		yield return new WaitForSeconds (wait.start);
 		while(true){
