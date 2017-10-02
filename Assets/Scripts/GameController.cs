@@ -13,12 +13,19 @@ public class Texts{
 	public UnityEngine.UI.Text score, restart, gameOver;
 }
 
+[System.Serializable]
+public class Asteroids{
+	public GameObject asteroid1, asteroid2, asteroid3;
+}
+
 public class GameController : MonoBehaviour {
-	public GameObject hazard;
 	public Vector3 spawnValues;
 	public int hazardCount;
 
+	// public GameObject asteroids;
+
 	public Wait wait;
+	public Asteroids asteroids;
 	public Texts texts;
 		
 	private int score; 
@@ -59,9 +66,7 @@ public class GameController : MonoBehaviour {
 		yield return new WaitForSeconds (wait.start);
 		while(true){
 			for (int i =0; i < hazardCount; i++){
-				Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
-				Quaternion spawnRotation = Quaternion.identity;
-				Instantiate(hazard, spawnPosition, spawnRotation);
+				_generateAsteroid();
 				yield return new WaitForSeconds (wait.spawn);
 			}
 			yield return new WaitForSeconds (wait.wave);
@@ -72,6 +77,25 @@ public class GameController : MonoBehaviour {
 			}
 		}
 	}
+
+	private void _generateAsteroid(){
+		Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+		Quaternion spawnRotation = Quaternion.identity;
+		// GameObject currentAsteroid = new GameObject();
+		int asteroidType = (int)Mathf.Ceil(Random.Range(0.0f, 3.0f));
+		
+		switch(asteroidType){
+			case 1:
+				Instantiate(asteroids.asteroid1, spawnPosition, spawnRotation); 
+			break;
+			case 2:
+				Instantiate(asteroids.asteroid1, spawnPosition, spawnRotation); 
+			break;
+			case 3:
+				Instantiate(asteroids.asteroid1, spawnPosition, spawnRotation); 
+			break;
+		}	
+	} 
 
 	public void GameOver(){
 		texts.gameOver.text = "Game Over";
