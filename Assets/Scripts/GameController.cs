@@ -15,7 +15,7 @@ public class Texts{
 
 [System.Serializable]
 public class Asteroids{
-	public GameObject asteroid1, asteroid2, asteroid3;
+	public GameObject asteroid0, asteroid1, asteroid2;
 }
 
 public class GameController : MonoBehaviour {
@@ -83,16 +83,17 @@ public class GameController : MonoBehaviour {
 		Quaternion spawnRotation = Quaternion.identity;
 		// GameObject currentAsteroid = new GameObject();
 		int asteroidType = (int)Mathf.Ceil(Random.Range(0.0f, 3.0f));
+		Debug.Log(asteroidType);
 		
 		switch(asteroidType){
 			case 1:
-				Instantiate(asteroids.asteroid1, spawnPosition, spawnRotation); 
+				Instantiate(asteroids.asteroid0, spawnPosition, spawnRotation); 
 			break;
 			case 2:
 				Instantiate(asteroids.asteroid1, spawnPosition, spawnRotation); 
 			break;
 			case 3:
-				Instantiate(asteroids.asteroid1, spawnPosition, spawnRotation); 
+				Instantiate(asteroids.asteroid2, spawnPosition, spawnRotation); 
 			break;
 		}	
 	} 
